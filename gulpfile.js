@@ -7,7 +7,13 @@
   var resolved = require('./resolved');
 
   $g.task('resolved', function () {
-    resolved('./index.yaml', './swagger.json');
+    process.chdir('./yaml');
+    try {
+      resolved('index.yaml', 'swagger.json');
+    } catch (e) {
+      console.log(e);
+    }
+    process.chdir('.');
   });
 
   $g.task('lint', function() {
