@@ -12,7 +12,7 @@ parameters                 parameter files
 
 ```
 clone https://github.com/mole-chen/swagger-split.git
-cd swagger-split
+cd swagger-split/yaml
 npm install -d --global gulp
 npm install -d
 ```
