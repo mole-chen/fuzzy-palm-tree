@@ -1,0 +1,20 @@
+{
+  "globalstrict": true,
+  "asi": false,
+  "browser": true,
+  "eqeqeq": false,
+  "eqnull": true,
+  "es3": true,
+  "expr": true,
+  "jquery": true,
+  "latedef": true,
+  "laxbreak": true,
+  "strict": true,
+  "undef": true,
+  "unused": false,
+  "sub": true,
+  "globals": {
+    "console": true,
+    "require": true
+  }
+}

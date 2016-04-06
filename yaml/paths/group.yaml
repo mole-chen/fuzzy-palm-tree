@@ -1,0 +1,62 @@
+/groups:
+  get:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/GroupList'
+  post:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/GroupPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/GroupResponse'
+/groups/{id}:
+  get:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: 组ID
+        in: path
+        required: true
+        type: integer
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/GroupResponse'
+  put:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: 组ID
+        in: path
+        required: true
+        type: integer
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/GroupPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/GroupResponse'

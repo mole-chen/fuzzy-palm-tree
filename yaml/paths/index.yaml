@@ -1,0 +1,5 @@
+- $ref: ./user.yaml
+- $ref: ./me.yaml
+- $ref: ./register.yaml
+- $ref: ./tenant.yaml
+- $ref: ./group.yaml

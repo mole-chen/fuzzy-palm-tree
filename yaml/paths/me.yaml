@@ -1,0 +1,28 @@
+/me:
+  get:
+    tags:
+      - Me
+    summary: 用户档案
+    parameters:
+      - $ref: '#/parameters/authorization'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'
+  put:
+    tags:
+      - Me
+    summary: 修改档案
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/UserPut'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'

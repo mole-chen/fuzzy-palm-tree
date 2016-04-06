@@ -1,0 +1,16 @@
+/registers:
+  post:
+    tags:
+      - Register
+    summary: 注册用户
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/UserPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'

@@ -1,0 +1,20 @@
+authorization:
+  name: Authorization
+  in: header
+  description: Authorization
+  required: true
+  type: string
+  default: Bearer <TOKEN>
+perPage:
+  name: per-page
+  in: query
+  description: Per Page, limit [1, 50]
+  type: integer
+  default: 20
+  maximum: 50
+  minimum: 1
+page:
+  name: page
+  in: query
+  description: Current Page
+  type: integer

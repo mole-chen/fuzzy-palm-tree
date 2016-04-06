@@ -1,0 +1,42 @@
+Group:
+  properties:
+    id:
+      type: integer
+    tenantId:
+      type: integer
+    name:
+      type: string
+    description:
+      type: string
+    ownerId:
+      type: integer
+    ownerEmail:
+      type: string
+    createAt:
+      type: integer
+    updateAt:
+      type: integer
+    status:
+      type: string
+      enum:
+        - ACTIVE
+GroupResponse:
+  properties:
+    $ref: '#/definitions/Group/properties?fields=id,name,description,createAt,updateAt,status'
+GroupPost:
+  required:
+    - name
+  properties:
+    $ref: '#/definitions/Group/properties?fields=name,description'
+GroupList:
+  required:
+    - items
+  properties:
+    items:
+      type: array
+      items:
+        $ref: '#/definitions/GroupResponse'
+    _links:
+      $ref: '#/definitions/_links'
+    _meta:
+      $ref: '#/definitions/_meta'

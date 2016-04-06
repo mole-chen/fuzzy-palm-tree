@@ -1,0 +1,45 @@
+User:
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+      description: 用户名称
+    email:
+      type: string
+      format: email
+    password:
+      type: string
+      format: password
+    status:
+      type: string
+      enum:
+        - ACTIVE
+        - PENDING
+    createAt:
+      type: integer
+    updateAt:
+      type: integer
+UserResponse:
+  properties:
+    $ref: '#/definitions/User/properties?fields=id,email,name,status,createAt,updateAt'
+UserPost:
+  required:
+    - email
+  properties:
+    $ref: '#/definitions/User/properties?fields=email,name'
+UserPut:
+  properties:
+    $ref: '#/definitions/User/properties?fields=name'
+UserList:
+  required:
+    - items
+  properties:
+    items:
+      type: array
+      items:
+        $ref: '#/definitions/UserResponse'
+    _links:
+      $ref: '#/definitions/_links'
+    _meta:
+      $ref: '#/definitions/_meta'

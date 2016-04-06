@@ -1,0 +1,59 @@
+/tenants:
+  post:
+    tags:
+      - Tenant
+    summary: 创建 Tenant
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/TenantPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/TenantResponse'
+/tenants/{id}:
+  get:
+    tags:
+      - Tenant
+    summary: 查看 Tenant
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: Tenant ID
+        in: path
+        required: true
+        type: integer
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/TenantResponse'
+  put:
+    tags:
+      - Tenant
+    summary: 更新 Tenant
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: Tenant ID
+        in: path
+        required: true
+        type: integer
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/TenantPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/TenantResponse'
+  patch:
+    tags:
+      - Tenant
+      

@@ -1,0 +1,33 @@
+swagger: '2.0'
+info:
+  title: Sheet Documented API
+  description: sheet api 1.0
+  version: 1.0.0
+#host: '127.0.0.1:8810'
+basePath: /v1
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  $ref: ./paths/index.yaml
+parameters:
+  $ref: ./parameters/index.yaml
+definitions:
+  $ref: ./definitions/index.yaml
+tags:
+  - name: Me
+    description: 当前用户
+  - name: User
+    description: 用户操作
+  - name: Register
+    description: 注册用户
+  - name: Global
+    description: 全局操作
+  - name: Tenant
+    description: Tenant 操作
+  - name: Group
+    description: 组操作

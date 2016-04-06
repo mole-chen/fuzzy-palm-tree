@@ -1,0 +1,24 @@
+_meta:
+  type: object
+  properties:
+    totalCount:
+      type: integer
+      description: 总数
+    pageCount:
+      type: integer
+      description: 总页数
+    currentPage:
+      type: integer
+      description: 当前页码
+    perPage:
+      type: integer
+      description: 每页记录数
+_links:
+  type: object
+  properties:
+    self:
+      type: object
+      properties:
+        href:
+          type: string
+          format: url

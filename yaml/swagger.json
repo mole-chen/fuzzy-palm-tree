@@ -1,0 +1,737 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Sheet Documented API",
+    "description": "sheet api 1.0",
+    "version": "1.0.0"
+  },
+  "basePath": "/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "用户列表",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "$ref": "#/parameters/perPage"
+          },
+          {
+            "$ref": "#/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "创建用户",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "查看用户",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "用户ID",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "修改用户",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "用户ID",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPut"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "用户档案",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "修改档案",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPut"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/registers": {
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "summary": "注册用户",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/tenants": {
+      "post": {
+        "tags": [
+          "Tenant"
+        ],
+        "summary": "创建 Tenant",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TenantPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TenantResponse"
+            }
+          }
+        }
+      }
+    },
+    "/tenants/{id}": {
+      "get": {
+        "tags": [
+          "Tenant"
+        ],
+        "summary": "查看 Tenant",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "Tenant ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TenantResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tenant"
+        ],
+        "summary": "更新 Tenant",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "Tenant ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TenantPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TenantResponse"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
+    "/groups": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GroupList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GroupPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GroupResponse"
+            }
+          }
+        }
+      }
+    },
+    "/groups/{id}": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "组ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GroupResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "组ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GroupPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GroupResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "authorization": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "required": true,
+      "type": "string",
+      "default": "Bearer <TOKEN>"
+    },
+    "perPage": {
+      "name": "per-page",
+      "in": "query",
+      "description": "Per Page, limit [1, 50]",
+      "type": "integer",
+      "default": 20,
+      "maximum": 50,
+      "minimum": 1
+    },
+    "page": {
+      "name": "page",
+      "in": "query",
+      "description": "Current Page",
+      "type": "integer"
+    }
+  },
+  "definitions": {
+    "_meta": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "description": "总数"
+        },
+        "pageCount": {
+          "type": "integer",
+          "description": "总页数"
+        },
+        "currentPage": {
+          "type": "integer",
+          "description": "当前页码"
+        },
+        "perPage": {
+          "type": "integer",
+          "description": "每页记录数"
+        }
+      }
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "format": "url"
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string",
+          "format": "password"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "PENDING"
+          ]
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        }
+      }
+    },
+    "UserResponse": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "PENDING"
+          ]
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        }
+      }
+    },
+    "UserPost": {
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        }
+      }
+    },
+    "UserPut": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "用户名称"
+        }
+      }
+    },
+    "UserList": {
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserResponse"
+          }
+        },
+        "_links": {
+          "$ref": "#/definitions/_links"
+        },
+        "_meta": {
+          "$ref": "#/definitions/_meta"
+        }
+      }
+    },
+    "Tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        }
+      }
+    },
+    "TenantResponse": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        }
+      }
+    },
+    "TenantPost": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Group": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "tenantId": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "integer"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE"
+          ]
+        }
+      }
+    },
+    "GroupResponse": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "integer"
+        },
+        "updateAt": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE"
+          ]
+        }
+      }
+    },
+    "GroupPost": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "GroupList": {
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupResponse"
+          }
+        },
+        "_links": {
+          "$ref": "#/definitions/_links"
+        },
+        "_meta": {
+          "$ref": "#/definitions/_meta"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Me",
+      "description": "当前用户"
+    },
+    {
+      "name": "User",
+      "description": "用户操作"
+    },
+    {
+      "name": "Register",
+      "description": "注册用户"
+    },
+    {
+      "name": "Global",
+      "description": "全局操作"
+    },
+    {
+      "name": "Tenant",
+      "description": "Tenant 操作"
+    },
+    {
+      "name": "Group",
+      "description": "组操作"
+    }
+  ]
+}

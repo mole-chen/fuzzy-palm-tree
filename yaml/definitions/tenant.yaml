@@ -1,0 +1,19 @@
+Tenant:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    createAt:
+      type: integer
+    updateAt:
+      type: integer
+TenantResponse:
+  properties:
+    $ref: '#/definitions/Tenant/properties?fields=id,name,createAt,updateAt'
+TenantPost:
+  required:
+    - name
+  properties:
+    $ref: '#/definitions/Tenant/properties?fields=name'

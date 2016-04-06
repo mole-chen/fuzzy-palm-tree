@@ -1,0 +1,68 @@
+/users:
+  get:
+    tags:
+      - User
+    summary: 用户列表
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - $ref: '#/parameters/perPage'
+      - $ref: '#/parameters/page'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserList'
+  post:
+    tags:
+      - User
+    summary: 创建用户
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/UserPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'
+/users/{id}:
+  get:
+    tags:
+      - User
+    summary: 查看用户
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: 用户ID
+        in: path
+        type: integer
+        required: true
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'
+  put:
+    tags:
+      - User
+    summary: 修改用户
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: 用户ID
+        in: path
+        type: integer
+        required: true
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/UserPut'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/UserResponse'
