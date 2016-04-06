@@ -1,8 +1,26 @@
-# Multi-file [Swagger](http://swagger.io) example
+# Swagger schema split example
 
-Example of how to split up a large Swagger spec into smaller files.
+## DIRECTORY STRUCTURE
 
-### [Read the blog post](http://azimi.me/2015/07/16/split-swagger-into-smaller-files.html)
+```
+definitions/               definition files
+paths/                     path files
+parameters                 parameter files
+```
 
-#### License
-MIT
+## Installation
+
+```
+clone https://github.com/mole-chen/swagger-split.git
+cd swagger-split
+npm install -d --global gulp
+npm install -d
+```
+
+## Usage
+
+```
+gulp
+OR
+gulp watch
+```
