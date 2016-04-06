@@ -24,3 +24,13 @@ gulp
 OR
 gulp watch
 ```
+
+## Server
+
+Start server and access http://127.0.0.1:8888
+
+```
+php -S 0.0.0.0:8888
+```
+
+
