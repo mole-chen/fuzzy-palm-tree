@@ -72,4 +72,21 @@
         type: integer
     responses:
       200:
+        description: OK
         $ref: '#/responses/Success'
+/groups/{groupId}/members:
+  get:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: groupId
+        description: 组ID
+        in: path
+        required: true
+        type: integer
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/GroupMemberList'

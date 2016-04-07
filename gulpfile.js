@@ -9,11 +9,15 @@
   $g.task('resolved', function () {
     process.chdir('./yaml');
     try {
-      resolved('index.yaml', 'swagger.json');
+      resolved('index.yaml', 'swagger.json')
+        .then(function () {
+          process.chdir('..');
+        }, function () {
+          process.chdir('..');
+        });
     } catch (e) {
       console.log(e);
     }
-    process.chdir('.');
   });
 
   $g.task('lint', function() {

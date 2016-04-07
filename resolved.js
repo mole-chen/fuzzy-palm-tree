@@ -86,7 +86,7 @@ module.exports = function (rootFile, destFile) {
   var root = YAML.load(FS.readFileSync(rootFile).toString());
 
   JsonRef.clearCache();
-  JsonRef.resolveRefs(root, options).then(function (res) {
+  return JsonRef.resolveRefs(root, options).then(function (res) {
     merge(res.resolved, ['definitions']);
     merge(res.resolved, ['paths']);
 

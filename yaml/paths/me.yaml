@@ -26,3 +26,22 @@
         description: OK
         schema:
           $ref: '#/definitions/UserResponse'
+/me/tenants:
+  get:
+    tags:
+      - Me
+    summary: 用户参与公司
+    parameters:
+      - $ref: '#/parameters/authorization'
+    responses:
+      200:
+        description: OK
+        schema:
+          type: object
+          required:
+            - items
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/definitions/TenantResponse'

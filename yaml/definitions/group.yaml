@@ -40,3 +40,41 @@ GroupList:
       $ref: '#/definitions/_links'
     _meta:
       $ref: '#/definitions/_meta'
+
+# Group Member
+GroupMember:
+  properties:
+    id:
+      description: Group Member ID
+      type: integer
+    tenantId:
+      type: integer
+    groupId:
+      type: integer
+    userId:
+      type: integer
+    name:
+      type: string
+    email:
+      type: string
+    createAt:
+      type: integer
+GroupMemberList:
+  required:
+    - items
+  properties:
+    items:
+      type: array
+      items:
+        $ref: '#/definitions/GroupMemberResponse'
+    _links:
+      $ref: '#/definitions/_links'
+    _meta:
+      $ref: '#/definitions/_meta'
+GroupMemberResponse:
+  required:
+    - id
+    - name
+    - email
+  properties:
+    $ref: '#/definitions/GroupMember/properties?fields=id,name,email'

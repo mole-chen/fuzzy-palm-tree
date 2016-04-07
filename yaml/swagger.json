@@ -206,6 +206,38 @@
         }
       }
     },
+    "/me/tenants": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "用户参与公司",
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "required": [
+                "items"
+              ],
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/TenantResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/registers": {
       "post": {
         "tags": [
@@ -321,11 +353,6 @@
             }
           }
         }
-      },
-      "patch": {
-        "tags": [
-          "Tenant"
-        ]
       }
     },
     "/groups": {
@@ -451,7 +478,35 @@
         ],
         "responses": {
           "200": {
+            "description": "OK",
             "$ref": "#/responses/Success"
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/members": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "groupId",
+            "description": "组ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GroupMemberList"
+            }
           }
         }
       }
@@ -872,6 +927,70 @@
         },
         "_meta": {
           "$ref": "#/definitions/_meta"
+        }
+      }
+    },
+    "GroupMember": {
+      "properties": {
+        "id": {
+          "description": "Group Member ID",
+          "type": "integer"
+        },
+        "tenantId": {
+          "type": "integer"
+        },
+        "groupId": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createAt": {
+          "type": "integer"
+        }
+      }
+    },
+    "GroupMemberList": {
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupMemberResponse"
+          }
+        },
+        "_links": {
+          "$ref": "#/definitions/_links"
+        },
+        "_meta": {
+          "$ref": "#/definitions/_meta"
+        }
+      }
+    },
+    "GroupMemberResponse": {
+      "required": [
+        "id",
+        "name",
+        "email"
+      ],
+      "properties": {
+        "id": {
+          "description": "Group Member ID",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
         }
       }
     }
