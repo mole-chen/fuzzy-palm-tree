@@ -1,3 +1,4 @@
+- $ref: ./token.yaml
 - $ref: ./paginate.yaml
 - $ref: ./user.yaml
 - $ref: ./tenant.yaml

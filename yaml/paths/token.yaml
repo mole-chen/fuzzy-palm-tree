@@ -1,0 +1,15 @@
+/oauth2/token:
+  post:
+    tags:
+      - Global
+    summary: 获取TOKEN
+    parameters:
+      - name: body
+        in: body
+        schema:
+          $ref: '#/definitions/TokenPost'
+    responses:
+      200:
+        description: OK
+        schema:
+          $ref: '#/definitions/TokenResponse'
