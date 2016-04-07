@@ -432,6 +432,28 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorization"
+          },
+          {
+            "name": "id",
+            "description": "组ID",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/Success"
+          }
+        }
       }
     }
   },
@@ -458,6 +480,68 @@
       "in": "query",
       "description": "Current Page",
       "type": "integer"
+    }
+  },
+  "responses": {
+    "Success": {
+      "description": "Successful Response",
+      "schema": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "PartialSuccess": {
+      "description": "Partial successful Response",
+      "schema": {
+        "required": [
+          "code",
+          "message",
+          "failedItems"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "failedItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {

@@ -15,7 +15,9 @@ produces:
 paths:
   $ref: ./paths/index.yaml
 parameters:
-  $ref: ./parameters/index.yaml
+  $ref: ./others/parameter.yaml
+responses:
+  $ref: ./others/response.yaml
 definitions:
   $ref: ./definitions/index.yaml
 tags:

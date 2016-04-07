@@ -1,0 +1,39 @@
+Success:
+  description: Successful Response
+  schema:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      result:
+        type: object
+PartialSuccess:
+  description: Partial successful Response
+  schema:
+    required:
+      - code
+      - message
+      - failedItems
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      failedItems:
+        type: array
+        items:
+          type: object
+          properties:
+            index:
+              type: integer
+            error:
+              type: object
+              properties:
+                code: 
+                  type: integer
+                message:
+                  type: string

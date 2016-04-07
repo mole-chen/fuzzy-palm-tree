@@ -60,3 +60,16 @@
         description: OK
         schema:
           $ref: '#/definitions/GroupResponse'
+  delete:
+    tags:
+      - Group
+    parameters:
+      - $ref: '#/parameters/authorization'
+      - name: id
+        description: 组ID
+        in: path
+        required: true
+        type: integer
+    responses:
+      200:
+        $ref: '#/responses/Success'
